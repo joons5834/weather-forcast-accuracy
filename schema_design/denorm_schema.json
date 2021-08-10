@@ -1,55 +1,84 @@
 [
     {
-        "name": "id",
-        "type": "INT64",
-        "mode": "REQUIRED"
-    },
-    {
-        "name": "time_observed",
+        "name": "target_time",
         "type": "TIMESTAMP",
         "mode": "REQUIRED"
-    },
-    {
-        "name": "obs_service",
-        "type": "RECORD",
-        "mode": "REQUIRED",
-        "fields": [
-            {
-                "name": "service_id",
-                "type": "INT64",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "name",
-                "type": "STRING",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "website",
-                "type": "STRING",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "forecast_update_freq",
-                "type": "STRING",
-                "mode": "REPEATED"
-            },
-            {
-                "name": "is_closed",
-                "type": "BOOL",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "not_changed_since",
-                "type": "DATETIME",
-                "mode": "NULLABLE"
-            }
-        ]
     },
     {
         "name": "forecast_zone",
         "type": "GEOGRAPHY",
         "mode": "REQUIRED"
+    },
+    {
+        "description": "forecast data grouped by weather services",
+        "name": "forecasts",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+            {
+                "name": "forecast_service",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "forecast_data",
+                "type": "RECORD",
+                "mode": "REPEATED",
+                "fields": [
+
+                    {
+                        "name": "forecast_before",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "precipitation_mm",
+                        "type": "FLOAT64",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "main_desc",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "sub_desc",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "temp_c",
+                        "type": "FLOAT64",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "wind_speed",
+                        "type": "FLOAT64",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "wind_dir_deg",
+                        "type": "FLOAT64",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "precipitation_prob",
+                        "type": "FLOAT64",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "uv_index",
+                        "type": "FLOAT64",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "extra_conditions",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            }
+        ]
     },
     {
         "description": "Observations produced by each station in the forecast zone",
@@ -61,6 +90,43 @@
                 "name": "station_id",
                 "type": "INT64",
                 "mode": "NULLABLE"
+            },
+            {
+                "name": "obs_service",
+                "type": "RECORD",
+                "mode": "REQUIRED",
+                "fields": [
+                    {
+                        "name": "service_id",
+                        "type": "INT64",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "name",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "website",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "forecast_update_freq",
+                        "type": "STRING",
+                        "mode": "REPEATED"
+                    },
+                    {
+                        "name": "is_closed",
+                        "type": "BOOL",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "not_changed_since",
+                        "type": "DATETIME",
+                        "mode": "NULLABLE"
+                    }
+                ]
             },
             {
                 "name": "precipitation_mm",
@@ -166,75 +232,6 @@
                 "mode": "NULLABLE"
             }
         ]
-    },
-    {
-        "description": "forecasts grouped by weather services",
-        "name": "forecasts_by_service",
-        "type": "RECORD",
-        "mode": "REPEATED",
-        "fields": [
-            {
-                "name": "forecast_service",
-                "type": "STRING",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "forecasts",
-                "type": "RECORD",
-                "mode": "REPEATED",
-                "fields": [
-                    {
-                        "name": "forecast_before",
-                        "type": "STRING",
-                        "mode": "NULLABLE"
-                    },
-                    {
-                        "name": "precipitation_mm",
-                        "type": "FLOAT64",
-                        "mode": "NULLABLE"
-                    },
-                    {
-                        "name": "main_desc",
-                        "type": "STRING",
-                        "mode": "NULLABLE"
-                    },
-                    {
-                        "name": "sub_desc",
-                        "type": "STRING",
-                        "mode": "NULLABLE"
-                    },
-                    {
-                        "name": "temp_c",
-                        "type": "FLOAT64",
-                        "mode": "NULLABLE"
-                    },
-                    {
-                        "name": "wind_speed",
-                        "type": "FLOAT64",
-                        "mode": "NULLABLE"
-                    },
-                    {
-                        "name": "wind_dir_deg",
-                        "type": "FLOAT64",
-                        "mode": "NULLABLE"
-                    },
-                    {
-                        "name": "precipitation_prob",
-                        "type": "FLOAT64",
-                        "mode": "NULLABLE"
-                    },
-                    {
-                        "name": "uv_index",
-                        "type": "FLOAT64",
-                        "mode": "NULLABLE"
-                    },
-                    {
-                        "name": "extra_conditions",
-                        "type": "STRING",
-                        "mode": "NULLABLE"
-                    }
-                ]
-            }
-        ]
     }
+
 ]
