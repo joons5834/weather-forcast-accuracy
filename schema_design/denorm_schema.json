@@ -182,11 +182,6 @@
         "mode": "REQUIRED",
         "fields": [
             {
-                "name": "station_id",
-                "type": "INT64",
-                "mode": "NULLABLE"
-            },
-            {
                 "name": "precipitation_mm",
                 "type": "FLOAT64",
                 "mode": "NULLABLE"
