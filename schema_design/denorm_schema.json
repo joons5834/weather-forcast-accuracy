@@ -27,8 +27,8 @@
                 "fields": [
 
                     {
-                        "name": "forecast_before",
-                        "type": "STRING",
+                        "name": "forecast_before_hr",
+                        "type": "INT64",
                         "mode": "NULLABLE"
                     },
                     {
