@@ -1,6 +1,11 @@
 [
     {
-        "name": "target_time",
+        "name": "forecast_target_time_start",
+        "type": "TIMESTAMP",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "forecast_target_time_finish",
         "type": "TIMESTAMP",
         "mode": "REQUIRED"
     },
