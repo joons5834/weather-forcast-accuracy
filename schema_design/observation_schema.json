@@ -25,11 +25,6 @@
                 "mode": "NULLABLE"
             },
             {
-                "name": "forecast_update_freq",
-                "type": "STRING",
-                "mode": "REPEATED"
-            },
-            {
                 "name": "is_closed",
                 "type": "BOOL",
                 "mode": "NULLABLE"
@@ -67,7 +62,7 @@
         "mode": "NULLABLE"
     },
     {
-        "name": "wind_speed",
+        "name": "wind_speed_ms",
         "type": "FLOAT64",
         "mode": "NULLABLE"
     },
