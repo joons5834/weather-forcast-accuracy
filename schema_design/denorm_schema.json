@@ -57,7 +57,7 @@
                         "mode": "NULLABLE"
                     },
                     {
-                        "name": "wind_speed",
+                        "name": "wind_speed_ms",
                         "type": "FLOAT64",
                         "mode": "NULLABLE"
                     },
@@ -112,7 +112,7 @@
                 "mode": "NULLABLE"
             },
             {
-                "name": "wind_speed",
+                "name": "wind_speed_ms",
                 "type": "FLOAT64",
                 "mode": "NULLABLE"
             },
