@@ -1,9 +1,23 @@
 [
     {
-        "name": "station_id",
-        "type": "INT64",
-        "mode": "NULLABLE"
+        "description": "metadata on observation station",
+        "name": "station",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "name": "id",
+                "type": "INT64",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "geography",
+                "type": "GEOGRAPHY",
+                "mode": "NULLABLE"
+            }
+        ]
     },
+    
     {
         "name": "obs_service",
         "type": "RECORD",
