@@ -31,25 +31,33 @@
                 "mode": "NULLABLE"
             },
             {
-                "name": "level1",
-                "type": "STRING",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "level2",
-                "type": "STRING",
-                "mode": "NULLABLE"
-            },
-            {
-                "name": "level3",
-                "type": "STRING",
-                "mode": "NULLABLE"
-            },
-            {
-                "description": "JSON object for extra address levels",
-                "name": "extra_levels",
-                "type": "STRING",
-                "mode": "NULLABLE"
+                "description": "region names within the forecast zone",
+                "name": "cities",
+                "type": "RECORD",
+                "mode": "REPEATED",
+                "fields": [
+                    {
+                        "name": "level1",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "level2",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "level3",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "description": "JSON object for extra address levels",
+                        "name": "extra_levels",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
             },
             {
                 "description": "geo data in geography type of BigQuery",
