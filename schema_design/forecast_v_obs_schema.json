@@ -1,0 +1,195 @@
+[
+    {
+        "name": "forecast_target_time_start",
+        "type": "TIMESTAMP",
+        "mode": "REQUIRED"
+    },
+    {
+        "name": "forecast_target_time_finish",
+        "type": "TIMESTAMP",
+        "mode": "REQUIRED"
+    },
+    {
+        "description": "metadata on forecast region",
+        "name": "forecast_zone",
+        "type": "RECORD",
+        "mode": "NULLABLE",
+        "fields": [
+            {
+                "description": "surrogate key for forecast_zone", 
+                "name": "id",
+                "type": "INT64",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "continent",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "country",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "description": "region names within the forecast zone",
+                "name": "cities",
+                "type": "RECORD",
+                "mode": "REPEATED",
+                "fields": [
+                    {
+                        "name": "level1",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "level2",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "level3",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "description": "JSON object for extra address levels",
+                        "name": "extra_levels",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            },
+            {
+                "description": "geo data in geography type of BigQuery",
+                "name": "geography_bq",
+                "type": "GEOGRAPHY",
+                "mode": "NULLABLE"
+            }
+        ]
+    },
+    {
+        "description": "forecast data grouped by weather services",
+        "name": "forecasts",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+            {
+                "name": "forecast_service",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "forecast_data",
+                "type": "RECORD",
+                "mode": "REPEATED",
+                "fields": [
+
+                    {
+                        "name": "forecast_before_hr",
+                        "type": "INT64",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "precipitation_mm",
+                        "type": "FLOAT64",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "main_desc",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "sub_desc",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "temp_c",
+                        "type": "FLOAT64",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "wind_speed_ms",
+                        "type": "FLOAT64",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "wind_dir_deg",
+                        "type": "FLOAT64",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "precipitation_prob",
+                        "type": "FLOAT64",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "uv_index",
+                        "type": "FLOAT64",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "extra_conditions",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "description": "mean of each observation in the forecast zone",
+        "name": "observation_mean",
+        "type": "RECORD",
+        "mode": "REQUIRED",
+        "fields": [
+            {
+                "name": "precipitation_mm",
+                "type": "FLOAT64",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "main_desc",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "sub_desc",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "temp_c",
+                "type": "FLOAT64",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "wind_speed_ms",
+                "type": "FLOAT64",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "wind_dir_deg",
+                "type": "FLOAT64",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "precipitation_prob",
+                "type": "FLOAT64",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "uv_index",
+                "type": "FLOAT64",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "extra_conditions",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    }
+
+]
