@@ -34,13 +34,7 @@
                 "name": "website",
                 "type": "STRING",
                 "mode": "NULLABLE"
-            },
-            {
-                "name": "forecast_update_freq",
-                "type": "STRING",
-                "mode": "NULLABLE"
             }
-        
         ]
     },
     {
