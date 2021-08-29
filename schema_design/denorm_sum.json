@@ -15,8 +15,8 @@
         "mode": "REQUIRED"
     },
     {
-        "description": "service",
-        "name": "",
+        "description": "weather service provider",
+        "name": "provider",
         "type": "RECORD",
         "mode": "REPEATED",
         "fields": [
