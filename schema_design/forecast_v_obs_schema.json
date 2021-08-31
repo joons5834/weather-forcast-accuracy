@@ -90,11 +90,6 @@
                         "mode": "NULLABLE"
                     },
                     {
-                        "name": "forecast_at",
-                        "type": "TIMESTAMP",
-                        "mode": "REQUIRED"
-                    },
-                    {
                         "name": "precipitation_mm",
                         "type": "FLOAT64",
                         "mode": "NULLABLE"
