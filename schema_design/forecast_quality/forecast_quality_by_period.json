@@ -1,0 +1,100 @@
+[
+    {
+        "description": "window start for `forecast_target_time_start`",
+        "name": "period_start",
+        "type": "TIMESTAMP",
+        "mode": "NULLABLE"
+    },
+    {
+        "description": "window end for `forecast_target_time_start`",
+        "name": "period_end",
+        "type": "TIMESTAMP",
+        "mode": "NULLABLE"
+    },
+    {
+        "description": "forecast performance metrics by weather services",
+        "name": "performance",
+        "type": "RECORD",
+        "mode": "REPEATED",
+        "fields": [
+            {
+                "name": "weather_service",
+                "type": "RECORD",
+                "mode": "REQUIRED",
+                "fields": [
+                    {
+                        "description": "surrogate id for weather service",
+                        "name": "id",
+                        "type": "INT64",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "name",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "website",
+                        "type": "STRING",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "is_closed",
+                        "type": "BOOL",
+                        "mode": "NULLABLE"
+                    },
+                    {
+                        "name": "not_changed_since",
+                        "type": "DATETIME",
+                        "mode": "NULLABLE"
+                    }
+                ]
+            },
+            {
+                "name": "precipitation_mm",
+                "type": "FLOAT64",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "main_desc",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "sub_desc",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "temp_c",
+                "type": "FLOAT64",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "wind_speed_ms",
+                "type": "FLOAT64",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "wind_dir_deg",
+                "type": "FLOAT64",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "precipitation_prob",
+                "type": "FLOAT64",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "uv_index",
+                "type": "FLOAT64",
+                "mode": "NULLABLE"
+            },
+            {
+                "name": "extra_conditions",
+                "type": "STRING",
+                "mode": "NULLABLE"
+            }
+        ]
+    }
+]
