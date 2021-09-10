@@ -7,7 +7,7 @@
         "fields": [
             {
                 "name": "id",
-                "type": "INT64",
+                "type": "INTEGER",
                 "mode": "NULLABLE"
             },
             {
@@ -24,7 +24,7 @@
         "fields": [
             {
                 "name": "service_id",
-                "type": "INT64",
+                "type": "INTEGER",
                 "mode": "NULLABLE"
             },
             {
@@ -39,7 +39,7 @@
             },
             {
                 "name": "is_closed",
-                "type": "BOOL",
+                "type": "BOOLEAN",
                 "mode": "NULLABLE"
             },
             {
@@ -56,7 +56,7 @@
     },
     {
         "name": "precipitation_mm",
-        "type": "FLOAT64",
+        "type": "FLOAT",
         "mode": "NULLABLE"
     },
     {
@@ -71,27 +71,27 @@
     },
     {
         "name": "temp_c",
-        "type": "FLOAT64",
+        "type": "FLOAT",
         "mode": "NULLABLE"
     },
     {
         "name": "wind_speed_ms",
-        "type": "FLOAT64",
+        "type": "FLOAT",
         "mode": "NULLABLE"
     },
     {
         "name": "wind_dir_deg",
-        "type": "FLOAT64",
+        "type": "FLOAT",
         "mode": "NULLABLE"
     },
     {
         "name": "precipitation_prob",
-        "type": "FLOAT64",
+        "type": "FLOAT",
         "mode": "NULLABLE"
     },
     {
         "name": "uv_index",
-        "type": "FLOAT64",
+        "type": "FLOAT",
         "mode": "NULLABLE"
     },
     {
