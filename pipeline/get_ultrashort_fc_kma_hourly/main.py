@@ -2,9 +2,12 @@ import os
 from datetime import timedelta, timezone, datetime
 import json
 import requests
+from time import sleep
 
 from google.cloud import storage
 
+MAX_TRIES = 3
+is_response_valid = False
 session = requests.Session()
 client = storage.Client()
 URL = os.environ['URL']
@@ -14,7 +17,7 @@ folder_name = os.environ['FOLDER_NAME']
 KST = timezone(timedelta(hours=9), name='KST')
 xys = json.loads(os.environ['NX_NYS'])
 
-def get_short_forecast_hourly(event, context):
+def get_ultrashort_forecast_hourly(event, context):
      """Triggered from a message on a Cloud Pub/Sub topic.
      Args:
           event (dict): Event payload.
@@ -37,8 +40,22 @@ def get_short_forecast_hourly(event, context):
             'ny':ny,
             'dataType':'JSON'
       }
-      response = session.get(URL, params=params)
+      is_response_valid = False
+      tries = MAX_TRIES
+      while not is_response_valid and tries > 0:
+       response = session.get(URL, params=params)
+       if len(response.text.encode('utf-8')) >= 1000:
+        is_response_valid = True
+        print('valid file size')
+       else:
+        print('invalid file size. Retrying')
+        sleep(1)
+       tries -= 1
+
       response.raise_for_status()
+      if not is_response_valid:
+       print('writing error message into a file.')
+       
 
       file_name = folder_name + '/' + ts_now.strftime(f"kma_usfc_{nx}_{ny}_%Y-%m-%d_%H-%M_KST.json")
 
