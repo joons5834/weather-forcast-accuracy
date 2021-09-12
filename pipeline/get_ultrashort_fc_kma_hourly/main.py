@@ -8,7 +8,6 @@ from google.cloud import storage
 
 MAX_TRIES = 3
 is_response_valid = False
-session = requests.Session()
 client = storage.Client()
 URL = os.environ['URL']
 KEY = os.environ['KEY']
@@ -43,7 +42,7 @@ def get_ultrashort_forecast_hourly(event, context):
       is_response_valid = False
       tries = MAX_TRIES
       while not is_response_valid and tries > 0:
-       response = session.get(URL, params=params)
+       response = requests.get(URL, params=params)
        if len(response.text.encode('utf-8')) >= 1000:
         is_response_valid = True
         print('valid file size')
