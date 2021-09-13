@@ -1,0 +1,50 @@
+[
+    {
+        "description": "date published",
+        "name": "baseDate",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "description": "time published",
+        "name": "baseTime",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "description": "weather attribute",
+        "name": "category",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "description": "target date",
+        "name": "fcstDate",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "description": "target time",
+        "name": "fcstTime",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "description": "weather attribute value",
+        "name": "fcstValue",
+        "type": "STRING",
+        "mode": "NULLABLE"
+    },
+    {
+        "description": "KMA grid x",
+        "name": "nx",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    },
+    {
+        "description": "KMA grid y",
+        "name": "ny",
+        "type": "INTEGER",
+        "mode": "NULLABLE"
+    }
+]
