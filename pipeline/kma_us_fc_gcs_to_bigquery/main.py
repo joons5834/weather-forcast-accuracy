@@ -1,5 +1,6 @@
 import os
 import json
+# from time import strptime
 
 from google.cloud import bigquery
 from google.cloud import storage
@@ -7,7 +8,7 @@ from google.cloud import storage
 dir_path = os.path.dirname(os.path.realpath(__file__))
 os.chdir(dir_path)
 DATASET_ID = 'raw_data' # os.environ['DATASET']
-TABLE_ID = 'no_dt_ultrashort_fc_kma' # os.environ['TABLE']
+TABLE_ID = 'ultrashort_fc_kma' # os.environ['TABLE']
 PROJECT_ID = 'weather-forecast-accuracy'
 storage_client = storage.Client()
 bq_client = bigquery.Client()
@@ -16,7 +17,7 @@ def load_csv_to_bq(data, context):
         dataset_ref = bq_client.dataset(DATASET_ID) # dataset_id here
         job_config = bigquery.LoadJobConfig()
         job_config.write_disposition = 'WRITE_APPEND'
-        job_config.schema = bq_client.schema_from_json(r'raw_ultrashort_fc_kma.json')
+        job_config.schema = bq_client.schema_from_json(r'dt_raw_ultrashort_fc_kma.json')
 
         # get blobs from the directory excluding subdirectories and their files
         bucket_name = 'weather-forecasts-for-eval'
@@ -29,11 +30,25 @@ def load_csv_to_bq(data, context):
         for blob in blobs:
             try:
                 d = json.loads(blob.download_as_string(client=None))
-                json_rows += d['response']['body']['items']['item']
-            except:
+                rows = d['response']['body']['items']['item']
+                for row in rows:
+                    # print('row to be added:', row)
+                    bdate = row['baseDate']
+                    btime = row['baseTime']
+                    fdate = row['fcstDate']
+                    ftime = row['fcstTime']
+                    row['baseTimestamp'] = f'{bdate[:4]}-{bdate[4:6]}-{bdate[6:]} {btime[:2]}:{btime[2:]}+09:00'
+                    row['fcstTimestamp'] = f'{fdate[:4]}-{fdate[4:6]}-{fdate[6:]} {ftime[:2]}:{ftime[2:]}+09:00'
+                    del row['baseDate']
+                    del row['baseTime']
+                    del row['fcstDate']
+                    del row['fcstTime']
+                    json_rows.append(row)
+                    # print('row added:', row)
+            except BaseException as e:
                 # print('Invalid json:', blob.name)
-                invalid_files.append(blob.name)
-                continue
+                invalid_files.append((blob.name, repr(e)))
+                raise e
         
         print('Finished json parsing.')
         if invalid_files:
@@ -66,5 +81,3 @@ def load_csv_to_bq(data, context):
             print('Check errors for', rename_errors)
   
         print('Job finished.')
-
-load_csv_to_bq(None, None)
