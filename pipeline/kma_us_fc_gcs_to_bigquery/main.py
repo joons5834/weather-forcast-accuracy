@@ -1,14 +1,13 @@
 import os
 import json
-# from time import strptime
 
 from google.cloud import bigquery
 from google.cloud import storage
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 os.chdir(dir_path)
-DATASET_ID = 'raw_data' # os.environ['DATASET']
-TABLE_ID = 'ultrashort_fc_kma' # os.environ['TABLE']
+DATASET_ID = 'raw_data'
+TABLE_ID = 'ultrashort_fc_kma'
 PROJECT_ID = 'weather-forecast-accuracy'
 storage_client = storage.Client()
 bq_client = bigquery.Client()
@@ -21,8 +20,7 @@ def load_csv_to_bq(data, context):
 
         # get blobs from the directory excluding subdirectories and their files
         bucket_name = 'weather-forecasts-for-eval'
-        blobs = list(storage_client.list_blobs(bucket_name, prefix='kma/test_us/', delimiter='/'))
-        # print('blobs:', [blob.name for blob in blobs])
+        blobs = list(storage_client.list_blobs(bucket_name, prefix='kma/ultrashort/', delimiter='/'))
         # weather-forecasts-for-eval/kma/test_us
         # parse JSON file 
         json_rows = []
@@ -32,7 +30,6 @@ def load_csv_to_bq(data, context):
                 d = json.loads(blob.download_as_string(client=None))
                 rows = d['response']['body']['items']['item']
                 for row in rows:
-                    # print('row to be added:', row)
                     bdate = row['baseDate']
                     btime = row['baseTime']
                     fdate = row['fcstDate']
@@ -44,11 +41,8 @@ def load_csv_to_bq(data, context):
                     del row['fcstDate']
                     del row['fcstTime']
                     json_rows.append(row)
-                    # print('row added:', row)
             except BaseException as e:
-                # print('Invalid json:', blob.name)
                 invalid_files.append((blob.name, repr(e)))
-                raise e
         
         print('Finished json parsing.')
         if invalid_files:
@@ -72,7 +66,6 @@ def load_csv_to_bq(data, context):
                 new_name = blob.name[:last_slash_idx] + '/done' + blob.name[last_slash_idx:]
                 bucket.rename_blob(blob, new_name)
             except:
-                # print('Error occurred renaming', blob.name, '->', new_name)
                 rename_errors.append(blob.name)
                 continue
         
