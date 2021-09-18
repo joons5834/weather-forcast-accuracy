@@ -1,4 +1,4 @@
-CREATE MATERIALIZED VIEW `weather-forecast-accuracy.raw_data.wide_kma_ultrashort_fc` 
+CREATE MATERIALIZED VIEW `weather-forecast-accuracy.raw_data.wide_conv_kma_ultrashort_fc` 
 PARTITION BY TIMESTAMP_TRUNC(fcstTimestamp, YEAR) AS
 SELECT
     baseTimestamp,fcstTimestamp, nx, ny,
