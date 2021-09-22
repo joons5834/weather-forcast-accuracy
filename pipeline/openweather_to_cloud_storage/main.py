@@ -9,15 +9,10 @@ bucket_name = os.environ['BUCKET'] #without gs://
 API_KEY = os.environ['OPENWEATHER_KEY']
 LOCATIONS = json.loads(os.environ['LOCATIONS']) # [[lat1,lon1], [lat2,lon2],...]
 
+client = storage.Client() # set storage client
+bucket = client.get_bucket(bucket_name) # get bucket
 
 def import_file(event, context):
-
-    # set storage client
-    client = storage.Client()
-
-    # get bucket
-    bucket = client.get_bucket(bucket_name)
-
     for lat, lon in LOCATIONS:
         # download the file to Cloud Function's tmp directory
         params = {'lat':lat,'lon':lon,'appid': API_KEY, 'exclude': 'minutely,alerts'}
