@@ -13,7 +13,15 @@ PROJECT_ID = 'weather-forecast-accuracy'
 storage_client = storage.Client()
 bq_client = bigquery.Client()
 
-def load_geojson_to_bq(data, context):
+def load_geojson_to_bq(request):
+    """Responds to any HTTP request.
+    Args:
+        request (flask.Request): HTTP request object.
+    Returns:
+        The response text or any set of values that can be turned into a
+        Response object using
+        `make_response <http://flask.pocoo.org/docs/1.0/api/#flask.Flask.make_response>`.
+    """
     dataset_ref = bq_client.dataset(DATASET_ID) # dataset_id here
     job_config = bigquery.LoadJobConfig()
     job_config.write_disposition = 'WRITE_APPEND'
@@ -80,8 +88,8 @@ def load_geojson_to_bq(data, context):
     if rename_errors:
         print('Check migration errors for', rename_errors)
 
-    print('Job finished.')
+    return 'Job finished.'
     
 
 if __name__ == '__main__':
-    load_geojson_to_bq(None, None)
+    load_geojson_to_bq(None)
