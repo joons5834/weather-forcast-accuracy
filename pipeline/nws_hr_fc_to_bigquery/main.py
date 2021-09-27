@@ -21,6 +21,7 @@ def load_geojson_to_bq(data, context):
 
         # get blobs from the directory excluding subdirectories and their files
         bucket_name = 'weather-forecasts-for-eval'
+        bucket = storage_client.bucket(bucket_name)
         blobs = list(storage_client.list_blobs(bucket_name, prefix='nws/hourly/', delimiter='/'))
         # weather-forecasts-for-eval/kma/test_us
         # parse JSON file 
@@ -38,6 +39,20 @@ def load_geojson_to_bq(data, context):
         print('Finished json parsing.')
         if invalid_files:
             print('Check errors for', invalid_files)
+            print('Check invalid/')
+
+        # Moving invalid files to ./invalid
+        rename_errors = []
+        for invalid_file, _ in invalid_files:
+            invalid_blob = bucket.blob(invalid_file)
+            try:
+                last_slash_idx = invalid_blob.name.rfind('/')
+                new_name = invalid_blob.name[:last_slash_idx] + '/invalid' + invalid_blob.name[last_slash_idx:]
+                bucket.rename_blob(invalid_blob, new_name)
+            except:
+                rename_errors.append(invalid_blob.name)
+                continue
+
         # load the data into BQ
         load_job = bq_client.load_table_from_json(
                 json_rows=json_rows,#: Iterable[Dict[str, Any]]
@@ -50,7 +65,6 @@ def load_geojson_to_bq(data, context):
 
         # move files to '/done'
         bucket = storage_client.bucket(bucket_name)
-        rename_errors = []
         print('moving blobs to ./done')
         for blob in blobs:
             try:
