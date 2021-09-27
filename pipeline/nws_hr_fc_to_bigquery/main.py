@@ -39,7 +39,7 @@ def load_geojson_to_bq(data, context):
         print('Finished json parsing.')
         if invalid_files:
             print('Check errors for', invalid_files)
-            print('Check invalid/')
+            print('Check files in .invalid/')
 
         # Moving invalid files to ./invalid
         rename_errors = []
@@ -54,6 +54,7 @@ def load_geojson_to_bq(data, context):
                 continue
 
         # load the data into BQ
+        print('Loading data to BQ..')
         load_job = bq_client.load_table_from_json(
                 json_rows=json_rows,#: Iterable[Dict[str, Any]]
                 destination=dataset_ref.table(TABLE_ID),
@@ -77,7 +78,7 @@ def load_geojson_to_bq(data, context):
         
         print("Blob migration finished.")
         if rename_errors:
-            print('Check errors for', rename_errors)
+            print('Check migration errors for', rename_errors)
   
         print('Job finished.')
     
