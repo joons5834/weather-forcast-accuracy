@@ -1,0 +1,126 @@
+[
+    {
+        "fields": [
+            {
+                "mode": "NULLABLE",
+                "name": "detailedForecast",
+                "type": "STRING"
+            },
+            {
+                "mode": "NULLABLE",
+                "name": "shortForecast",
+                "type": "STRING"
+            },
+            {
+                "mode": "NULLABLE",
+                "name": "windDirection",
+                "type": "STRING"
+            },
+            {
+                "mode": "NULLABLE",
+                "name": "temperatureUnit",
+                "type": "STRING"
+            },
+            {
+                "mode": "NULLABLE",
+                "name": "icon",
+                "type": "STRING"
+            },
+            {
+                "mode": "NULLABLE",
+                "name": "temperatureTrend",
+                "type": "STRING"
+            },
+            {
+                "mode": "NULLABLE",
+                "name": "endTime",
+                "type": "TIMESTAMP"
+            },
+            {
+                "mode": "NULLABLE",
+                "name": "temperature",
+                "type": "INTEGER"
+            },
+            {
+                "mode": "NULLABLE",
+                "name": "isDaytime",
+                "type": "BOOLEAN"
+            },
+            {
+                "mode": "NULLABLE",
+                "name": "startTime",
+                "type": "TIMESTAMP"
+            },
+            {
+                "mode": "NULLABLE",
+                "name": "name",
+                "type": "STRING"
+            },
+            {
+                "mode": "NULLABLE",
+                "name": "windSpeed",
+                "type": "STRING"
+            },
+            {
+                "mode": "NULLABLE",
+                "name": "number",
+                "type": "INTEGER"
+            }
+        ],
+        "mode": "REPEATED",
+        "name": "periods",
+        "type": "RECORD"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "updateTime",
+        "type": "TIMESTAMP"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "validTimes",
+        "type": "STRING"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "forecastGenerator",
+        "type": "STRING"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "updated",
+        "type": "TIMESTAMP"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "generatedAt",
+        "type": "TIMESTAMP"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "units",
+        "type": "STRING"
+    },
+    {
+        "fields": [
+            {
+                "mode": "NULLABLE",
+                "name": "unitCode",
+                "type": "STRING"
+            },
+            {
+                "mode": "NULLABLE",
+                "name": "value",
+                "type": "FLOAT"
+            }
+        ],
+        "mode": "NULLABLE",
+        "name": "elevation",
+        "type": "RECORD"
+    },
+    {
+        "mode": "NULLABLE",
+        "name": "geometry",
+        "type": "GEOGRAPHY"
+    }
+]
