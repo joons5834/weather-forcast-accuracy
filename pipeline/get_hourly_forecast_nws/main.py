@@ -45,6 +45,8 @@ def get_hourly_forecast_nws(request):
                 response = requests.get(ENDPOINT_PREFIX + f'{grid_id}/{grid_x},{grid_y}{ENDPOINT_SUFFIX}',
                 headers=headers, params=params)
                 response.raise_for_status()
+                if len(response.content) < 1000:
+                    raise Exception('invalid file size.')
             except BaseException as e:
                 print(e)
                 print('API error. Retrying')
