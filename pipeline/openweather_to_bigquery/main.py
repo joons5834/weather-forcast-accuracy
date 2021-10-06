@@ -25,7 +25,7 @@ def load_geojson_to_bq(request):
     dataset_ref = bq_client.dataset(DATASET_ID) # dataset_id here
     job_config = bigquery.LoadJobConfig()
     job_config.write_disposition = 'WRITE_APPEND'
-    # job_config.schema = bq_client.schema_from_json(r'schema.json')
+    job_config.clustering_fields = ['current_dt']
 
     # get blobs from the directory excluding subdirectories and their files
     bucket_name = 'openweather-api-data'
@@ -38,8 +38,9 @@ def load_geojson_to_bq(request):
     for blob in blobs:
         try:
             d = json.loads(blob.download_as_string(client=None))
-            # row = d['properties']
-            # row['geometry'] = geojson.dumps(d['geometry'])
+            for key in d['current']:
+                d['current_' + key] = d['current'][key]
+            del d['current']
             json_rows.append(d)
         except BaseException as e:
             invalid_files.append((blob.name, repr(e)))
