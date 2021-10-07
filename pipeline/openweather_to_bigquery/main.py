@@ -5,8 +5,6 @@ import geojson
 from google.cloud import bigquery
 from google.cloud import storage
 
-dir_path = os.path.dirname(os.path.realpath(__file__))
-os.chdir(dir_path)
 DATASET_ID = 'raw_data'
 TABLE_ID = 'openweathermap_h_d'
 PROJECT_ID = 'weather-forecast-accuracy'
@@ -30,9 +28,7 @@ def load_geojson_to_bq(request):
     # get blobs from the directory excluding subdirectories and their files
     bucket_name = 'openweather-api-data'
     bucket = storage_client.bucket(bucket_name)
-    blobs = list(storage_client.list_blobs(bucket_name,  delimiter='/')) #prefix='nws/hourly/',
-    # weather-forecasts-for-eval/kma/test_us
-    # parse JSON file 
+    blobs = list(storage_client.list_blobs(bucket_name, prefix='test/', delimiter='/'))
     json_rows = []
     invalid_files = []
     for blob in blobs:
