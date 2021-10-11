@@ -59,6 +59,9 @@ def load_geojson_to_bq(request):
             continue
 
     # load the data into BQ
+    if not json_rows:
+        print('Zero rows to load. Job finished')
+        return 'Zero rows to load. Job finished'
     print('Loading data to BQ..')
     load_job = bq_client.load_table_from_json(
             json_rows=json_rows,#: Iterable[Dict[str, Any]]
