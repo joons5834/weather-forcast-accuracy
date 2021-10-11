@@ -34,9 +34,21 @@ def load_geojson_to_bq(request):
     for blob in blobs:
         try:
             d = json.loads(blob.download_as_string(client=None))
+
+            last_hours = [d['current'], d['hourly']]
+            weathers = ['rain', 'snow']
+            for last_hour in last_hours:
+                for weather in weathers:
+                    if weather in last_hour and '1h' in last_hour[weather]:
+                        print('before:',last_hour)
+                        last_hour[weather]['last_hr'] = last_hour[weather]['1h'] 
+                        del last_hour[weather]['1h']
+                        print('after:', last_hour)
+
             for key in d['current']:
                 d['current_' + key] = d['current'][key]
             del d['current']
+
             json_rows.append(d)
         except BaseException as e:
             invalid_files.append((blob.name, repr(e)))
