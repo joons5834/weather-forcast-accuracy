@@ -67,7 +67,10 @@ def load_geojson_to_bq(request):
         invalid_blob = bucket.blob(invalid_file)
         try:
             last_slash_idx = invalid_blob.name.rfind('/')
-            new_name = invalid_blob.name[:last_slash_idx] + '/invalid' + invalid_blob.name[last_slash_idx:]
+            if last_slash_idx != -1:
+                new_name = invalid_blob.name[:last_slash_idx] + '/invalid' + invalid_blob.name[last_slash_idx:]
+            else:
+                new_name = 'invalid/' + invalid_blob.name
             bucket.rename_blob(invalid_blob, new_name)
         except:
             rename_errors.append(invalid_blob.name)
@@ -93,7 +96,10 @@ def load_geojson_to_bq(request):
     for blob in blobs:
         try:
             last_slash_idx = blob.name.rfind('/')
-            new_name = blob.name[:last_slash_idx] + '/done' + blob.name[last_slash_idx:]
+            if last_slash_idx != -1:
+                new_name = blob.name[:last_slash_idx] + '/done' + blob.name[last_slash_idx:]
+            else:
+                new_name = 'done/' + blob.name
             bucket.rename_blob(blob, new_name)
         except:
             rename_errors.append(blob.name)
