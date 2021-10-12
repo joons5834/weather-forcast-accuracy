@@ -1,0 +1,486 @@
+[
+  {
+    "fields": [
+      {
+        "mode": "NULLABLE",
+        "name": "last_hr",
+        "type": "FLOAT"
+      }
+    ],
+    "mode": "NULLABLE",
+    "name": "current_rain",
+    "type": "RECORD"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "current_wind_speed",
+    "type": "FLOAT"
+  },
+  {
+    "fields": [
+      {
+        "mode": "NULLABLE",
+        "name": "description",
+        "type": "STRING"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "icon",
+        "type": "STRING"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "main",
+        "type": "STRING"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "id",
+        "type": "INTEGER"
+      }
+    ],
+    "mode": "REPEATED",
+    "name": "current_weather",
+    "type": "RECORD"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "current_visibility",
+    "type": "FLOAT"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "current_clouds",
+    "type": "FLOAT"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "current_dew_point",
+    "type": "FLOAT"
+  },
+  {
+    "fields": [
+      {
+        "mode": "NULLABLE",
+        "name": "last_hr",
+        "type": "FLOAT"
+      }
+    ],
+    "mode": "NULLABLE",
+    "name": "current_snow",
+    "type": "RECORD"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "current_wind_gust",
+    "type": "FLOAT"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "current_uvi",
+    "type": "FLOAT"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "current_feels_like",
+    "type": "FLOAT"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "current_humidity",
+    "type": "FLOAT"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "current_sunrise",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "timezone_offset",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "current_sunset",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "current_dt",
+    "type": "INTEGER"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "current_temp",
+    "type": "FLOAT"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "lat",
+    "type": "FLOAT"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "timezone",
+    "type": "STRING"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "current_pressure",
+    "type": "FLOAT"
+  },
+  {
+    "fields": [
+      {
+        "mode": "NULLABLE",
+        "name": "rain",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "snow",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "clouds",
+        "type": "FLOAT"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "description",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "icon",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "main",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "id",
+            "type": "INTEGER"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "weather",
+        "type": "RECORD"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "wind_deg",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "uvi",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "moonrise",
+        "type": "INTEGER"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "humidity",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "pressure",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "pop",
+        "type": "FLOAT"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "morn",
+            "type": "FLOAT"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "night",
+            "type": "FLOAT"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "eve",
+            "type": "FLOAT"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "day",
+            "type": "FLOAT"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "feels_like",
+        "type": "RECORD"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "wind_gust",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "dt",
+        "type": "INTEGER"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "morn",
+            "type": "FLOAT"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "night",
+            "type": "FLOAT"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "max",
+            "type": "FLOAT"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "day",
+            "type": "FLOAT"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "min",
+            "type": "FLOAT"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "eve",
+            "type": "FLOAT"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "temp",
+        "type": "RECORD"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "moon_phase",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "dew_point",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "moonset",
+        "type": "INTEGER"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "sunrise",
+        "type": "INTEGER"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "wind_speed",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "sunset",
+        "type": "INTEGER"
+      }
+    ],
+    "mode": "REPEATED",
+    "name": "daily",
+    "type": "RECORD"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "current_wind_deg",
+    "type": "FLOAT"
+  },
+  {
+    "mode": "NULLABLE",
+    "name": "lon",
+    "type": "FLOAT"
+  },
+  {
+    "fields": [
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "last_hr",
+            "type": "FLOAT"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "rain",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "description",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "icon",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "main",
+            "type": "STRING"
+          },
+          {
+            "mode": "NULLABLE",
+            "name": "id",
+            "type": "INTEGER"
+          }
+        ],
+        "mode": "REPEATED",
+        "name": "weather",
+        "type": "RECORD"
+      },
+      {
+        "fields": [
+          {
+            "mode": "NULLABLE",
+            "name": "last_hr",
+            "type": "FLOAT"
+          }
+        ],
+        "mode": "NULLABLE",
+        "name": "snow",
+        "type": "RECORD"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "wind_deg",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "clouds",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "humidity",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "uvi",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "dew_point",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "visibility",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "pressure",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "wind_speed",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "pop",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "feels_like",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "wind_gust",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "temp",
+        "type": "FLOAT"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "dt",
+        "type": "INTEGER"
+      }
+    ],
+    "mode": "REPEATED",
+    "name": "hourly",
+    "type": "RECORD"
+  },
+  {
+    "fields": [
+      {
+        "mode": "NULLABLE",
+        "name": "sender_name",
+        "type": "STRING"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "event",
+        "type": "STRING"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "start",
+        "type": "INTEGER"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "end",
+        "type": "INTEGER"
+      },
+      {
+        "mode": "NULLABLE",
+        "name": "description",
+        "type": "STRING"
+      },
+      {
+        "mode": "REPEATED",
+        "name": "tags",
+        "type": "STRING"
+      }
+    ],
+    "mode": "REPEATED",
+    "name": "alerts",
+    "type": "RECORD"
+  }
+]

@@ -5,6 +5,8 @@ import geojson
 from google.cloud import bigquery
 from google.cloud import storage
 
+dir_path = os.path.dirname(os.path.realpath(__file__))
+os.chdir(dir_path)
 DATASET_ID = 'raw_data'
 TABLE_ID = 'openweathermap_h_d'
 PROJECT_ID = 'weather-forecast-accuracy'
@@ -23,6 +25,7 @@ def load_geojson_to_bq(request):
     dataset_ref = bq_client.dataset(DATASET_ID) # dataset_id here
     job_config = bigquery.LoadJobConfig()
     job_config.write_disposition = 'WRITE_APPEND'
+    job_config.schema = bq_client.schema_from_json(r'owm_schema.json')
     job_config.clustering_fields = ['current_dt']
 
     # get blobs from the directory excluding subdirectories and their files
