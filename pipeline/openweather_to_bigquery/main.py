@@ -35,7 +35,7 @@ def load_geojson_to_bq(request):
         try:
             d = json.loads(blob.download_as_string(client=None))
 
-            last_hours = [d['current'], d['hourly']]
+            last_hours = [d['current']] + d['hourly']
             weathers = ['rain', 'snow']
             for last_hour in last_hours:
                 for weather in weathers:
