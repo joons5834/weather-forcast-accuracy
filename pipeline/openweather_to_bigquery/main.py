@@ -1,7 +1,6 @@
 import os
 import json
 
-import geojson
 from google.cloud import bigquery
 from google.cloud import storage
 
