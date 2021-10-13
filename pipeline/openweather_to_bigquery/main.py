@@ -38,6 +38,7 @@ def load_geojson_to_bq(request):
         try:
             d = json.loads(blob.download_as_string(client=None))
 
+            # change invalid column name '1h' to 'last_hr'
             last_hours = [d['current']] + d['hourly']
             weathers = ['rain', 'snow']
             for last_hour in last_hours:
@@ -48,6 +49,7 @@ def load_geojson_to_bq(request):
                         del last_hour[weather]['1h']
                         print('after:', last_hour)
 
+            # Move dict `current` to the root level for the cluster/partition column(s)
             for key in d['current']:
                 d['current_' + key] = d['current'][key]
             del d['current']
