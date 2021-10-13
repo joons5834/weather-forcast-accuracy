@@ -12,7 +12,7 @@ PROJECT_ID = 'weather-forecast-accuracy'
 storage_client = storage.Client()
 bq_client = bigquery.Client()
 
-def load_geojson_to_bq(request):
+def load_openweather_to_bq(request):
     """Responds to any HTTP request.
     Args:
         request (flask.Request): HTTP request object.
@@ -114,4 +114,4 @@ def load_geojson_to_bq(request):
     
 
 if __name__ == '__main__':
-    load_geojson_to_bq(None)
+    load_openweather_to_bq(None)
