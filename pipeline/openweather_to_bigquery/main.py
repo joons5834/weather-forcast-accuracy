@@ -6,9 +6,9 @@ from google.cloud import storage
 
 dir_path = os.path.dirname(os.path.realpath(__file__))
 os.chdir(dir_path)
-DATASET_ID = 'raw_data'
-TABLE_ID = 'openweathermap_h_d'
-PROJECT_ID = 'weather-forecast-accuracy'
+DATASET_ID = os.getenv('DATASET_ID')# 'raw_data'
+TABLE_ID = os.getenv('TABLE_ID')# 'openweathermap_h_d'
+PROJECT_ID = os.getenv('PROJECT_ID')# 'weather-forecast-accuracy'
 storage_client = storage.Client()
 bq_client = bigquery.Client()
 
@@ -28,9 +28,9 @@ def load_openweather_to_bq(request):
     job_config.clustering_fields = ['current_dt']
 
     # get blobs from the directory excluding subdirectories and their files
-    bucket_name = 'openweather-api-data'
+    bucket_name = os.getenv('BUCKET_NAME') #'openweather-api-data'
     bucket = storage_client.bucket(bucket_name)
-    blobs = list(storage_client.list_blobs(bucket_name, prefix='test/', delimiter='/'))
+    blobs = list(storage_client.list_blobs(bucket_name, delimiter='/'))
     json_rows = []
     invalid_files = []
     for blob in blobs:
